@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:quantal
 MAINTAINER Bryce Reynolds <bryce@bloomboard.com>
 
 # Install packages

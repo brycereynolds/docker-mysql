@@ -7,9 +7,9 @@ Base docker image to run a MySQL database server
 Usage
 -----
 
-To create the image `bloomboard/mysql`, execute the following command on the bloomboard-mysql folder:
+To create the image `breynolds/docker-mysql`, execute the following command on the bloomboard-mysql folder:
 
-	sudo docker build -t bloomboard/mysql .
+	sudo docker build -t breynolds/docker-mysql .
 
 The first time that you run your container, a new user `admin` with all privileges 
 will be created in MySQL with a random password. To get the password, check the logs
@@ -45,7 +45,7 @@ Mounting the database file volume
 
 In order to persist the database data, you can mount a local folder from the host on the container to store the database files. To do so:
 
-	$ID=$(sudo docker run -d -v /path/in/host:/var/lib/mysql bloomboard/mysql-php /bin/bash -c "/usr/bin/mysql_install_db")
+	$ID=$(sudo docker run -d -v /path/in/host:/var/lib/mysql breynolds/docker-mysql /bin/bash -c "/usr/bin/mysql_install_db")
 
 This will mount the local folder `/path/in/host` inside the docker in `/var/lib/mysql` (where MySQL will store the database files by default). `mysql_install_db` creates the initial database structure.
 
@@ -57,7 +57,7 @@ Initializing the server
 
 To set your initial root password, run:
 
-	ID=$(sudo docker run -d bloomboard/mysql /bin/bash -c "/set_root_pw.sh <newpassword>")
+	ID=$(sudo docker run -d breynolds/docker-mysql /bin/bash -c "/set_root_pw.sh <newpassword>")
 
 Where `<newpassword>` is the password to be set for the root account. It will store the new container ID (like `d35bf1374e88`) in $ID. To create an image from that, execute:
 
